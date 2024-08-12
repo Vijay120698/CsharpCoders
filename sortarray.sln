@@ -1,25 +1,72 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.35122.118
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sortarray", "sortarray\sortarray.csproj", "{297BE8DD-1259-4771-A30A-840E0841C754}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{297BE8DD-1259-4771-A30A-840E0841C754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{297BE8DD-1259-4771-A30A-840E0841C754}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{297BE8DD-1259-4771-A30A-840E0841C754}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{297BE8DD-1259-4771-A30A-840E0841C754}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F6ED4A50-363B-4CD3-9DFA-8B4C9232A14B}
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sortarray
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the value size:");
+           int size= int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the array elements");
+            int[] arr= new int[size];
+            for (int i = 0; i < size; i++)
+            {Console.Write(" element"+(i+1)+":\t");
+                arr[i]=int.Parse(Console.ReadLine());
+            }
+            /*for (int i = 0; i < arr.Length -1; i++)
+            {
+
+
+                for (int j = 0; j < arr.Length-1; j++)
+                {
+
+                    if (arr[j] > arr[j+1])
+                    {
+                        int temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                    }
+
+                }
+            }*/
+
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+
+
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+
+                    if (arr[j - 1] > arr[j])
+                    {
+                        int temp = arr[j - 1];
+                        arr[j - 1] = arr[j];
+                        arr[j] = temp;
+                    }
+
+                }
+            }
+
+            Console.WriteLine("the array of Assending Order :");
+            for (int i = 0; i < size; i++)
+            {
+                
+                Console.Write("|"+arr[i]+"|"+"\t");
+                
+            }Console.ReadLine();
+
+            Console.WriteLine("the array of Desending Order :");
+            for (int i = size-1; i >= 0; i--)
+            {
+                Console.Write("|" + arr[i] + "|" + "\t");
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
